@@ -14,11 +14,11 @@ rawhtmlrwidget <- function(message, width = NULL, height = NULL, elementId = NUL
 
   # create widget
   htmlwidgets::createWidget(
-    name = 'rawhtmlwidget',
+    name = 'rawhtmlrwidget',
     x,
     width = width,
     height = height,
-    package = 'rawhtmlwidget',
+    package = 'rawhtmlrwidget',
     elementId = elementId
   )
 }
@@ -32,21 +32,21 @@ rawhtmlrwidget <- function(message, width = NULL, height = NULL, elementId = NUL
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
 #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 #'   string and have \code{'px'} appended.
-#' @param expr An expression that generates a rawhtmlwidget
+#' @param expr An expression that generates a rawhtmlrwidget
 #' @param env The environment in which to evaluate \code{expr}.
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
 #'
-#' @name rawhtmlwidget-shiny
+#' @name rawhtmlrwidget-shiny
 #'
 #' @export
 rawhtmlrwidgetOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'rawhtmlwidget', width, height, package = 'rawhtmlwidget')
+  htmlwidgets::shinyWidgetOutput(outputId, 'rawhtmlrwidget', width, height, package = 'rawhtmlrwidget')
 }
 
 #' @rdname rawhtmlwidget-shiny
 #' @export
 renderRawhtmlrwidget <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, mywidgetOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, rawhtmlrwidgetOutput, env, quoted = TRUE)
 }

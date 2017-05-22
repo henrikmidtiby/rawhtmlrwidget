@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: 'rawhtmlwidget',
+  name: 'rawhtmlrwidget',
 
   type: 'output',
 
